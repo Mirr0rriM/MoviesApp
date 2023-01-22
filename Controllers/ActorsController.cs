@@ -72,6 +72,7 @@ namespace MoviesApp.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [AgeFilter]
         public IActionResult Create([Bind("ID,Name,Surname,BirthDate")] InputActorViewModel inputModel)
         {
             if (ModelState.IsValid)
@@ -91,6 +92,7 @@ namespace MoviesApp.Controllers
         }
         
         [HttpGet]
+        [AgeFilter]
         // GET: Movies/Edit/5
         public IActionResult Edit(int? id)
         {

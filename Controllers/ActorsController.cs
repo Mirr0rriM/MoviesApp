@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
@@ -62,6 +63,7 @@ namespace MoviesApp.Controllers
         
         // GET: Movies/Create
         [HttpGet]
+        [Authorize]
         public IActionResult Create()
         {
             return View();
@@ -93,6 +95,7 @@ namespace MoviesApp.Controllers
         
         [HttpGet]
         [AgeFilter]
+        [Authorize]
         // GET: Movies/Edit/5
         public IActionResult Edit(int? id)
         {
@@ -156,6 +159,7 @@ namespace MoviesApp.Controllers
         }
         
         [HttpGet]
+        [Authorize(Roles = "Admin")]
         // GET: Movies/Delete/5
         public IActionResult Delete(int? id)
         {
